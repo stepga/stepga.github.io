@@ -6,15 +6,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<link rel="dns-prefetch" href="https://tile.opentopomap.org">
-	<link rel="dns-prefetch preconnect" href="https://unpkg.com" />
-	<link rel="preload" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" as="script">
-	<link rel="preload" href="https://unpkg.com/leaflet-ui@0.6.0/dist/leaflet-ui.js" as="script">
+	<link rel="preload" href="./script/leaflet.js" as="script">
+	<link rel="preload" href="./script/leaflet-ui.js" as="script">
 	
-	<style>@import '../libs/fullpage.css';</style>
+	<style>@import './style/fullpage.css';</style>
 
 	<!-- leaflet-ui -->
-	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-	<script src="https://unpkg.com/leaflet-ui@0.6.0/dist/leaflet-ui.js"></script>
+	<script src="script/leaflet.js"></script>
+	<script src="script/leaflet-ui.js"></script>
 
 	<style>
 		.leaflet-right .leaflet-control-layers-list {
@@ -86,52 +85,38 @@ let opts = {
 };
 
 let tracks = [
-	"tracks/20131006.gpx",
-	"tracks/20131110.gpx",
-	"tracks/20131229.gpx",
-	"tracks/20140126.gpx",
-	"tracks/20140209.gpx",
-	"tracks/20140316.gpx",
-	"tracks/20140406.gpx",
-	"tracks/20140518.gpx",
-	"tracks/20140615.gpx",
-	"tracks/20140713.gpx",
-	"tracks/20140713a.gpx",
-	"tracks/20140831.gpx",
-	"tracks/20141123.gpx",
-	"tracks/20141229.gpx",
-	"tracks/20150215.gpx",
-	"tracks/20150308.gpx",
-	"tracks/20150419.gpx",
-	"tracks/20150510.gpx",
-	"tracks/20150927.gpx",
-	"tracks/20151011.gpx",
-	"tracks/20151227.gpx",
-	"tracks/20160417.gpx",
-	"tracks/20160508.gpx",
-	// "demo.tcx",
-	// "demo.kml",
-	// "demo.geojson",
+	"tracks/2023-03-21_17-35_Tue.gpx",
+	"tracks/2023-03-23_17-51_Thu.gpx",
+	"tracks/2023-03-25_15-07_Sat.gpx",
+	"tracks/2023-03-27_17-29_Mon.gpx",
+	"tracks/2023-03-30_07-42_Thu.gpx",
+	"tracks/2023-04-02_13-48_Sun.gpx",
+	"tracks/2023-04-05_08-51_Wed.gpx",
+	"tracks/2023-04-17_13-40_Mon.gpx",
+	"tracks/2023-04-19_19-01_Wed.gpx",
+	"tracks/2023-04-22_11-58_Sat.gpx",
+	"tracks/2023-04-28_16-45_Fri.gpx",
+	"tracks/2023-04-28_18-10_Fri.gpx",
+	"tracks/2023-05-01_09-15_Mon.gpx",
+	"tracks/2023-05-03_16-36_Wed.gpx",
+	"tracks/2023-05-04_18-48_Thu.gpx",
+	"tracks/2023-05-08_17-24_Mon.gpx",
+	"tracks/2023-05-10_17-27_Wed.gpx",
+	"tracks/2023-05-14_16-25_Sun.gpx",
+	"tracks/2023-05-18_10-13_Thu.gpx",
+	"tracks/2023-05-25_18-59_Thu.gpx",
+	"tracks/2023-05-31_18-15_Wed.gpx",
+	"tracks/2023-06-05_20-05_Mon.gpx",
+	"tracks/2023-06-09_18-42_Fri.gpx",
+	"tracks/2023-06-12_19-07_Mon.gpx",
+	"tracks/2023-06-15_20-01_Thu.gpx",
+	"tracks/2023-06-19_20-02_Mon.gpx",
+	"tracks/2023-06-22_19-32_Thu.gpx",
+	"tracks/2023-06-26_19-14_Mon.gpx",
+	"tracks/2023-07-01_19-11_Sat.gpx",
 ];
 
 let points = [
-	{latlng:[47.5854438, 18.8260240], name:"Éles-kő"},
-	{latlng:[47.5838863, 18.8235221], name:"Ilona-lak"},
-	{latlng:[47.5689002, 18.8909285], name:"Bronz-barlang"},
-	{latlng:[47.5574055, 18.8954788], name:"Karády-lak"},
-	{latlng:[47.5860042, 18.8590258], name:"Kereszt a Kutya-hegyi kőfejtőnél"},
-	{latlng:[47.5946092, 18.8383717], name:"Kutya-hegyi zsomboly"},
-	{latlng:[47.5852204, 18.8420916], name:"vaditató"},
-	{latlng:[47.5675421, 18.8644739], name:"mészégető"},
-	{latlng:[47.5568284, 18.8683407], name:"festékégető"},
-	{latlng:[47.5627022, 18.8804863], name:"festékégető"},
-	{latlng:[47.5825126, 18.8512647], name:"kőfejtő"},
-	{latlng:[47.5966170, 18.8405121], name:"barlang"},
-	{latlng:[47.5692769, 18.9233352], name:"vaslelőhely"},
-	{latlng:[47.5609284, 18.9319601], name:"Hét-lyuk zsomboly"},
-	{latlng:[47.5532424, 18.8973270], name:"festékégető"},
-	{latlng:[47.5372269, 18.8914775], name:"katonasírok"},
-	{latlng:[47.5934486, 18.8812427], name:"Fülkés-kő"},
 ];
 
 let map = L.map('map', opts.map);
