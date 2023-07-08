@@ -9,11 +9,15 @@
 	<link rel="preload" href="./script/leaflet.js" as="script">
 	<link rel="preload" href="./script/leaflet-ui.js" as="script">
 	
-	<style>@import './style/fullpage.css';</style>
+	<link rel="stylesheet" href="style/fullpage.css" />
 
 	<!-- leaflet-ui -->
 	<script src="script/leaflet.js"></script>
 	<script src="script/leaflet-ui.js"></script>
+
+	<!-- leaflet-elevation -->
+	<link rel="stylesheet" href="style/leaflet-elevation.min.css" />
+	<script src="script/leaflet-elevation.min.js"></script>
 
 	<style>
 		.leaflet-right .leaflet-control-layers-list {
@@ -45,8 +49,8 @@
 	<script>
 let opts = {
 	map: {
-		center: [41.4583, 12.7059],
-		zoom: 5,
+		center: [49.0338231, 11.4712579],
+		zoom: 12,
 		mapTypeId: 'topo',
 		fullscreenControl: false,
 		searchControl: false,
@@ -75,53 +79,50 @@ let opts = {
 		},
 	},
 	elevation: {
-		theme: "yellow-theme",
+		theme: "lightblue-theme",
 		detached: true,
 		elevationDiv: '#elevation-div',
 		followMarker: true,
-		zFollow: 15,
-		legend: false,
+		zFollow: 1,
+		legend: true,
+		speed: true,
 	},
 };
 
 let tracks = [
-	"tracks/2023-03-21_17-35_Tue.gpx",
-	"tracks/2023-03-23_17-51_Thu.gpx",
-	"tracks/2023-03-25_15-07_Sat.gpx",
-	"tracks/2023-03-27_17-29_Mon.gpx",
-	"tracks/2023-03-30_07-42_Thu.gpx",
-	"tracks/2023-04-02_13-48_Sun.gpx",
-	"tracks/2023-04-05_08-51_Wed.gpx",
-	"tracks/2023-04-17_13-40_Mon.gpx",
-	"tracks/2023-04-19_19-01_Wed.gpx",
-	"tracks/2023-04-22_11-58_Sat.gpx",
-	"tracks/2023-04-28_16-45_Fri.gpx",
-	"tracks/2023-04-28_18-10_Fri.gpx",
-	"tracks/2023-05-01_09-15_Mon.gpx",
-	"tracks/2023-05-03_16-36_Wed.gpx",
-	"tracks/2023-05-04_18-48_Thu.gpx",
-	"tracks/2023-05-08_17-24_Mon.gpx",
-	"tracks/2023-05-10_17-27_Wed.gpx",
-	"tracks/2023-05-14_16-25_Sun.gpx",
-	"tracks/2023-05-18_10-13_Thu.gpx",
-	"tracks/2023-05-25_18-59_Thu.gpx",
-	"tracks/2023-05-31_18-15_Wed.gpx",
-	"tracks/2023-06-05_20-05_Mon.gpx",
-	"tracks/2023-06-09_18-42_Fri.gpx",
-	"tracks/2023-06-12_19-07_Mon.gpx",
-	"tracks/2023-06-15_20-01_Thu.gpx",
-	"tracks/2023-06-19_20-02_Mon.gpx",
-	"tracks/2023-06-22_19-32_Thu.gpx",
-	"tracks/2023-06-26_19-14_Mon.gpx",
 	"tracks/2023-07-01_19-11_Sat.gpx",
+	"tracks/2023-06-26_19-14_Mon.gpx",
+	"tracks/2023-06-22_19-32_Thu.gpx",
+	"tracks/2023-06-19_20-02_Mon.gpx",
+	"tracks/2023-06-15_20-01_Thu.gpx",
+	"tracks/2023-06-12_19-07_Mon.gpx",
+	"tracks/2023-06-09_18-42_Fri.gpx",
+	"tracks/2023-06-05_20-05_Mon.gpx",
+	"tracks/2023-05-31_18-15_Wed.gpx",
+	"tracks/2023-05-25_18-59_Thu.gpx",
+	"tracks/2023-05-18_10-13_Thu.gpx",
+	"tracks/2023-05-14_16-25_Sun.gpx",
+	"tracks/2023-05-10_17-27_Wed.gpx",
+	"tracks/2023-05-08_17-24_Mon.gpx",
+	"tracks/2023-05-04_18-48_Thu.gpx",
+	"tracks/2023-05-03_16-36_Wed.gpx",
+	"tracks/2023-05-01_09-15_Mon.gpx",
+	"tracks/2023-04-28_18-10_Fri.gpx",
+	"tracks/2023-04-28_16-45_Fri.gpx",
+	"tracks/2023-04-22_11-58_Sat.gpx",
+	"tracks/2023-04-19_19-01_Wed.gpx",
+	"tracks/2023-04-17_13-40_Mon.gpx",
+	"tracks/2023-04-05_08-51_Wed.gpx",
+	"tracks/2023-04-02_13-48_Sun.gpx",
+	"tracks/2023-03-30_07-42_Thu.gpx",
+	"tracks/2023-03-27_17-29_Mon.gpx",
+	"tracks/2023-03-25_15-07_Sat.gpx",
+	"tracks/2023-03-23_17-51_Thu.gpx",
+	"tracks/2023-03-21_17-35_Tue.gpx",
 ];
-
-let points = [
-];
-
-let map = L.map('map', opts.map);
+let points = [];
 let routes;
-
+let map = L.map('map', opts.map);
 map.on('plugins_loaded', function(e) {
 
 	routes = L.gpxGroup(tracks, {
@@ -141,14 +142,8 @@ map.on('plugins_loaded', function(e) {
 	});
 
 	routes.addTo(map);
-
-	map.attributionControl.addAttribution('Map Data: &copy; <a href="https://github.com/adoroszlai">Attila Doroszlai</a> (<a href="https://github.com/adoroszlai/joebed/blob/gh-pages/LICENSE.md">MIT License</a>)');
-
 });
-
 	</script>
-
-	<a href="https://github.com/Raruto/leaflet-elevation" class="view-on-github" style="position: fixed;top: 10px;left: calc(50% - 60px);z-index: 9999;"> <img alt="View on Github" src="https://raruto.github.io/img/view-on-github.png" title="View on Github" width="163"> </a>
 
 </body>
 
