@@ -1805,8 +1805,6 @@
           <osmand:heading>0</osmand:heading>
         </extensions>
       </trkpt>
-    </trkseg>
-    <trkseg>
       <trkpt lat="49.0363191" lon="11.5441261">
         <ele>374.8</ele>
         <time>2023-05-04T17:17:18Z</time>

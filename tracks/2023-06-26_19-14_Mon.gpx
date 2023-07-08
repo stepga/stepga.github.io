@@ -5223,8 +5223,6 @@
           <osmand:heading>0</osmand:heading>
         </extensions>
       </trkpt>
-    </trkseg>
-    <trkseg>
       <trkpt lat="49.0367035" lon="11.5433102">
         <ele>379.7</ele>
         <time>2023-06-26T18:10:42Z</time>
